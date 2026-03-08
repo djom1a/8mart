@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<title>Srećan 8. mart</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff8fb1,#ffc6d9);
+font-family:Arial;
+overflow:hidden;
+}
+
+/* kartica */
+
+.card{
+background:white;
+padding:60px;
+border-radius:25px;
+box-shadow:0 15px 35px rgba(0,0,0,0.25);
+text-align:center;
+z-index:2;
+}
+
+/* srce dugme */
+
+.heart{
+width:100px;
+height:90px;
+background:#e91e63;
+position:relative;
+transform:rotate(-45deg);
+margin:auto;
+cursor:pointer;
+}
+
+.heart:before,
+.heart:after{
+content:"";
+width:100px;
+height:90px;
+background:#e91e63;
+border-radius:50%;
+position:absolute;
+}
+
+.heart:before{
+top:-50px;
+left:0;
+}
+
+.heart:after{
+left:50px;
+top:0;
+}
+
+/* tekst */
+
+#message{
+display:none;
+font-size:46px;
+color:#e91e63;
+margin-top:30px;
+animation:show 1s ease;
+}
+
+@keyframes show{
+from{opacity:0; transform:scale(0.6);}
+to{opacity:1; transform:scale(1);}
+}
+
+/* cvetici */
+
+.flower{
+position:absolute;
+top:-40px;
+font-size:24px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+opacity:0.9;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="heart" onclick="openCard()"></div>
+
+<h1 id="message">Srećan 8. mart! 💐</h1>
+
+</div>
+
+<script>
+
+function openCard(){
+
+document.querySelector(".heart").style.display="none";
+document.getElementById("message").style.display="block";
+
+/* padajući cvetići */
+
+for(let i=0;i<40;i++){
+
+let flower=document.createElement("div");
+flower.className="flower";
+flower.innerHTML="🌸";
+
+flower.style.left=Math.random()*100+"vw";
+flower.style.animationDuration=(3+Math.random()*5)+"s";
+
+document.body.appendChild(flower);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
